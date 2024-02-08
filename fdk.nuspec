@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>fdk</id>
+     <version>1.0.0</version>
+
+    <title>fdk (Install)</title>
+    <authors>Nadeen</authors>
+    
+    <projectUrl>https://freshworks.com</projectUrl>
+ 
+    <tags>fdk node</tags>
+    <summary>sample</summary>
+    <description>A custom Chocolatey package for Node.js with eslint</description>
+    
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

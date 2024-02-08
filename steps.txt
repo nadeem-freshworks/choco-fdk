@@ -1,0 +1,28 @@
+
+choco  uninstall fdk
+choco pack fdk.nuspec
+
+
+C:\codebase\fdk
+
+choco install fdk --source="'C:\codebase\fdk'"
+
+choco list --local-only | findstr /i "fdk"
+
+
+
+helloworld
+toolsDir C:\ProgramData\chocolatey\lib\fdk\tools
+toolsDir C:\ProgramData\chocolatey\lib\fdk\tools\custom-node
+
+
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+powershell -File "C:\codebase\fdk\tools\chocolateybeforemodify.ps1"
+
+
+powershell -File "C:\codebase\fdk\tools\chocolateyinstall.ps1"
+
+
+
+(Get-Package fdk).Source
