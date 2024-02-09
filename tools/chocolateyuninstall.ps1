@@ -34,5 +34,5 @@ if ($key.Count -eq 1) {
 
 
 # remove FDK Relevent files
-$sourceFdkPath = "C:\FDK\loadFdk.ps1"
+$sourceFdkPath = "C:\fdk\loadFdk.ps1"
 Remove-Item -Path $sourceFdkPath -Force -ErrorAction SilentlyContinue

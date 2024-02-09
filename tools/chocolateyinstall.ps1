@@ -4,7 +4,7 @@ $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 Set-Location $toolsDir
 
-New-Item -ItemType Directory -Name "custom-node"
+New-Item -ItemType Directory -Name "custom-node" -Force
 
 $packageDir = Join-Path $toolsDir $packageName
 
@@ -12,7 +12,6 @@ Write-Host "custom node folder created here $packageDir"
 
 # Change the current directory to the selected folder
 Set-Location $packageDir
-
 
 
 # Clear-Host
@@ -44,8 +43,6 @@ $env:PATH =$nodeGlobalPath+ $env:PATH
 $nodeGlobalPath = Join-Path $packageDir  "\node18\node_global"
 $nodeCachePath = Join-Path  $packageDir  "\node18\node_cache"
 
-Write-Host "Node path: $nodePath"
-Write-Host "Node global path: $nodeGlobalPath"
 
 
 Write-Host "Setting the global path for node"
@@ -86,9 +83,46 @@ $fdkVersion = fdk -v
 
 Write-Host "FDK version: $fdkVersion"
 
-Write-Host "create a source file to  load the fdk"
 
-$scriptToInvoke = Join-Path $packageDir "source.ps1"
-Invoke-Expression -Command $scriptToInvoke
+# This file is used to package the source code of the module
 
+Write-Host "Creating a source file to load the FDK in new terminal"
+
+# Change the current directory to the selected folder
+Set-Location "C:\Program Files"
+New-Item -ItemType Directory -Name "Fdk" -Force
+
+Set-Location $packageDir
+
+# dynamically get the the location of the loadFdk.ps1 file 
+$loadFdkFilePathToSave = "C:\fdk\loadFdk.ps1"
+
+# Define the path to the LoadFDK.ps1 file
+$scriptToInvoke = Join-Path $toolsDir "loadFdk.ps1"
+
+
+Write-Host  "Use below path to load the FDK in new terminal"
+Write-Host  $loadFdkFilePathToSave
+
+# Content to be added
+$loadFdkFileContent = @"
+# Contents of LoadFDK.ps1
+# This script invokes another PowerShell script
+
+# Define the path to the script you want to invoke
+`$scriptToInvoke = '$scriptToInvoke'
+
+# Check if the script exists
+if (Test-Path `$scriptToInvoke) {
+    # If the script exists, invoke it
+    Invoke-Expression -Command "`$scriptToInvoke"
+} else {
+    Write-Host "Error: The specified script '`$scriptToInvoke' does not exist."
+}
+"@
+
+Remove-Item -Path $loadFdkFilePathToSave -Force -ErrorAction SilentlyContinue
+
+# Save the content to the file
+$loadFdkFileContent | Out-File -FilePath $loadFdkFilePathToSave -Force
 
