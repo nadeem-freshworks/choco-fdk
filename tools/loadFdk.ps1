@@ -1,6 +1,5 @@
 $packageName = 'custom-node'
-# $toolsDir = "C:\ProgramData\chocolatey\lib\fdk\tools"
-# $toolsDir = "C:\ProgramData\chocolatey\lib\fdk\tools"
+
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 $currentDir = Get-Location
