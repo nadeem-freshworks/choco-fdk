@@ -83,4 +83,12 @@ if ($npmVersion -eq $npmVer) {
 npm install 'https://cdn.freshdev.io/fdk/latest.tgz' --global
 
 $fdkVersion = fdk -v
-Write-Host "Successfully installed fdk $fdkVersion."
+
+Write-Host "FDK version: $fdkVersion"
+
+Write-Host "create a source file to  load the fdk"
+
+$scriptToInvoke = Join-Path $packageDir "source.ps1"
+Invoke-Expression -Command $scriptToInvoke
+
+

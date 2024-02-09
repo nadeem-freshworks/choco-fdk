@@ -5,7 +5,7 @@ choco pack fdk.nuspec
 
 C:\codebase\fdk
 
-choco install fdk --source="'C:\codebase\fdk'"
+choco install fdk --source="'C:\codebase\fdk'" '-y'
 
 choco list --local-only | findstr /i "fdk"
 
