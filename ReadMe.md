@@ -18,6 +18,12 @@ First, install the FDK using Chocolatey:
 choco install fdk
 ```
 
+For installation from local pacakge  please use below command
+
+
+```powershell
+choco install fdk --source="'path/to/nupkg'" '-y'
+```
 ## Usage
 
 After installing the FDK, the package performs the following tasks:
