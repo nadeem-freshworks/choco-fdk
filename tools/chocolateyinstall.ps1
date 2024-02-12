@@ -44,12 +44,10 @@ $nodeGlobalPath = Join-Path $packageDir  "\node18\node_global"
 $nodeCachePath = Join-Path  $packageDir  "\node18\node_cache"
 
 
-
 Write-Host "Setting the global path for node"
 npm config set prefix $nodeGlobalPath
 npm config set cache $nodeCachePath
 
-# Set-Location $curDir
 
 # # Get node version
 $nodeVer = node -v
@@ -77,6 +75,7 @@ if ($npmVersion -eq $npmVer) {
     exit
 }
 
+# installing fdk on gloabal level
 npm install 'https://cdn.freshdev.io/fdk/latest.tgz' --global
 
 $fdkVersion = fdk -v
