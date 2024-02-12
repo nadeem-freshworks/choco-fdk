@@ -4,14 +4,14 @@
     <id>fdk</id>
      <version>1.0.0</version>
 
-    <title>fdk (Install)</title>
-    <authors>Nadeen</authors>
+    <title>FDK </title>
+    <authors>freshworks Marketplace</authors>
     
-    <projectUrl>https://freshworks.com</projectUrl>
+    <projectUrl>https://developers.freshworks.com</projectUrl>
  
-    <tags>fdk node</tags>
-    <summary>sample</summary>
-    <description>A custom Chocolatey package for Node.js with eslint</description>
+    <tags>fdk</tags>
+    <summary>Chocolatey Package for Installing FDK in an Isolated Folder </summary>
+    <description>Chocolatey Package for Installing FDK in an Isolated Folder</description>
     
   </metadata>
   <files>
